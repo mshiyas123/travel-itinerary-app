@@ -1,0 +1,19 @@
+<h2>Cart & Summary</h2>
+
+<p *ngIf="cart.length === 0">No packages selected.</p>
+
+<div *ngFor="let item of cart; let i = index" class="card">
+  <h3>{{ item.place }} ({{ item.country }})</h3>
+  <p>Food: {{ item.food }}</p>
+  <p>Activities: {{ item.activities.join(', ') }}</p>
+  <p>Hotel: {{ item.hotelType }} - {{ item.nights }} nights</p>
+  <p>Flight Charges: ₹{{ item.flightCharges }}</p>
+  <p><strong>Total Cost: ₹{{ item.totalCost }}</strong></p>
+
+  <!-- ✅ REMOVE BUTTON -->
+  <button (click)="removeItem(i)">Remove</button>
+</div>
+
+<h3 *ngIf="cart.length > 0">
+  Grand Total: ₹{{ getTotal() }}
+</h3>

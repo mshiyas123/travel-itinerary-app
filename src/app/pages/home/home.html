@@ -1,0 +1,19 @@
+<h2>Select Destination</h2>
+
+<select (change)="onChange($event)">
+  <option value="">--Select--</option>
+  <option *ngFor="let c of countries" [value]="c">
+    {{ c }}
+  </option>
+</select>
+
+<div *ngFor="let i of filtered" class="card">
+  <h3>{{ i.place }} ({{ i.country }})</h3>
+  <p>Food: {{ i.food }}</p>
+  <p>Activities: {{ i.activities.join(', ') }}</p>
+  <p>Hotel: {{ i.hotelType }} - {{ i.nights }} nights</p>
+  <p>Flight: ₹{{ i.flightCharges }}</p>
+  <p>Total: ₹{{ i.totalCost }}</p>
+
+  <button (click)="addToCart(i)">Add to Cart</button>
+</div>
